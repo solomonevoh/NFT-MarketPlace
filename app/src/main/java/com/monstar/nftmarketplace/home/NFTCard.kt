@@ -82,14 +82,14 @@ fun NFTCard(title: String, subTitle: String, image: Painter, likes: Int, eth: Do
                 .padding(bottom = 10.dp)
         ) {
             Text(
-                text = "Wave",
+                text = title,
                 fontSize = 13.sp,
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Left
             )
             Text(
-                text = "wav2 #5672",
+                text = subTitle,
                 fontSize = 12.sp,
                 color = Color(235, 235, 245).copy(0.6f),
                 textAlign = TextAlign.Left
