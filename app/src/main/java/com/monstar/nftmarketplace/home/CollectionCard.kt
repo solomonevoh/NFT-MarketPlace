@@ -2,6 +2,7 @@ package com.monstar.nftmarketplace.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -48,7 +49,8 @@ fun CollectionCard(title: String, image: Painter, likes: Int) {
             .width(216.dp)
             .height(216.dp)
             .border(BorderStroke(1.dp, Color.White.copy(0.5f)), shape = RoundedCornerShape(30.dp))
-
+            .clip(RoundedCornerShape(30.dp))
+            .background(Color.White.copy(0.2f))
     ) {
         Image(
             image,
