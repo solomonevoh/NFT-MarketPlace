@@ -8,7 +8,7 @@ data class NFTCollection(
 
 val collections = listOf<NFTCollection>(
     NFTCollection("3D Art", R.drawable.card_3d, 123),
-    NFTCollection("Abstract Art", R.drawable.card_3d, 200),
-    NFTCollection("Portrait Art", R.drawable.card_3d, 242),
-    NFTCollection("Metaverse", R.drawable.card_3d, 420),
+    NFTCollection("Abstract Art", R.drawable.card_abstract, 200),
+    NFTCollection("Portrait Art", R.drawable.card_portrait, 242),
+    NFTCollection("Metaverse", R.drawable.card_metaverse, 420),
 )
