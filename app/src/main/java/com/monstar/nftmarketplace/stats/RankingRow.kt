@@ -9,13 +9,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -28,7 +31,13 @@ import com.monstar.nftmarketplace.rankings
 import com.monstar.nftmarketplace.ui.theme.NFTMarketplaceTheme
 
 @Composable
-fun RankingCard(title: String, image: Painter, percentageChange: Double = 0.0, eth: Double = 0.0) {
+fun RankingRow(
+    index: Int,
+    title: String,
+    image: Painter,
+    percentageChange: Double = 0.0,
+    eth: Double = 0.0
+) {
     Row(
         modifier = Modifier
             .border(
@@ -37,33 +46,46 @@ fun RankingCard(title: String, image: Painter, percentageChange: Double = 0.0, e
             )
             .padding(10.dp), verticalAlignment = Alignment.CenterVertically
     ) {
+        Text(
+            (index + 1).toString(),
+            fontSize = 15.sp,
+            color = Color(235, 235, 245).copy(0.6f),
+            modifier = Modifier.padding(10.dp)
+        )
         Image(
             image,
             contentDescription = "Ranking Image",
             modifier = Modifier
-                .size(30.dp)
+                .padding(vertical = 11.dp)
+                .padding(end = 15.dp)
+                .height(44.dp)
+                .width(44.dp)
                 .fillMaxSize()
-                .padding(2.dp)
-                .border(
-                    BorderStroke(1.dp, color = Color.Transparent),
-                    shape = RoundedCornerShape(22.dp)
-                )
+                .clip(RoundedCornerShape(10.dp))
         )
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(text = title, fontSize = 13.sp, color = Color.White, textAlign = TextAlign.Left)
+        Column {
+            Text(
+                text = title,
+                fontSize = 17.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
             Text(
                 text = "view info",
-                fontSize = 8.sp,
-                color = Color.White.copy(0.5f),
-                textAlign = TextAlign.Left
+                fontSize = 13.sp,
+                color = Color(235, 235, 245).copy(0.6f),
             )
         }
         Spacer(modifier = Modifier.weight(1f))
         Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+
             horizontalAlignment = Alignment.End
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(bottom = 8.dp)
+            ) {
                 Image(
                     painter = painterResource(id = R.drawable.icon_eth),
                     contentDescription = "Ethereum Icon",
@@ -80,14 +102,12 @@ fun RankingCard(title: String, image: Painter, percentageChange: Double = 0.0, e
 
             Text(
                 text = "$percentageChange%",
-                fontSize = 8.sp,
+                fontSize = 13.sp,
                 color = if (percentageChange > 0) {
                     Color.Green
                 } else {
                     Color.Red
-
-                },
-                textAlign = TextAlign.Left
+                }
             )
         }
     }
@@ -95,9 +115,10 @@ fun RankingCard(title: String, image: Painter, percentageChange: Double = 0.0, e
 
 @Preview
 @Composable
-fun PreviewRankingCard() {
+fun PreviewRankingRow() {
     NFTMarketplaceTheme {
-        RankingCard(
+        RankingRow(
+            0,
             rankings[0].title,
             painterResource(rankings[0].image),
             rankings[0].percentChange,
