@@ -13,7 +13,7 @@ data class Ranking(
 var rankings = listOf<Ranking>(
     Ranking("Azumi", R.drawable.ranking01, 3.99, 200055.02),
     Ranking("Hape prime", R.drawable.ranking02, 33.79, 180055.45),
-    Ranking("Crypto", R.drawable.ranking03, 3.99, 90055.62),
+    Ranking("Crypto", R.drawable.ranking03, -6.56, 90055.62),
     Ranking("Ape Club", R.drawable.ranking04, 3.99, 88055.12),
     Ranking("Bat", R.drawable.ranking05, 3.99, 10055.86),
     Ranking("Mutant", R.drawable.ranking06, 3.99, 9095.27),
