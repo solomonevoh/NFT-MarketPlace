@@ -37,7 +37,7 @@ import com.monstar.nftmarketplace.ui.theme.NFTMarketplaceTheme
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OnboardingCard() {
+fun OnboardingScreen() {
     Scaffold {
         Box {
             Image(
@@ -119,7 +119,8 @@ fun OnboardingCard() {
                                     "Get Started now",
                                     modifier = Modifier.padding(horizontal = 40.dp, vertical = 4.dp),
                                     fontSize = 15.sp,
-                                    fontWeight = FontWeight.SemiBold
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Color.White.copy(0.8f),
                                 )
                             }
                         }
@@ -140,6 +141,6 @@ fun OnboardingCard() {
 @Composable
 fun CardPreview() {
     NFTMarketplaceTheme {
-        OnboardingCard()
+        OnboardingScreen()
     }
 }
