@@ -21,17 +21,45 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.monstar.nftmarketplace.home.HomeScreen
+import com.monstar.nftmarketplace.onboarding.OnboardingScreen
+import com.monstar.nftmarketplace.stats.StatsScreen
 import com.monstar.nftmarketplace.ui.theme.NFTMarketplaceTheme
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RootScreen() {
+    val navigationController = rememberNavController()
+
+
     Scaffold(bottomBar = {
         BottomBar()
     }) {
-        HomeScreen()
+        NavHost(navController = navigationController, startDestination = NavigationItem.Login.route) {
+            composable(NavigationItem.Login.route){
+                OnboardingScreen()
+            }
+            composable(NavigationItem.Home.route){
+                HomeScreen()
+            }
+            composable(NavigationItem.Stats.route){
+                StatsScreen()
+            }
+            composable(NavigationItem.Add.route){
+                Text("Add")
+            }
+            composable(NavigationItem.Search.route){
+                Text("Search")
+            }
+            composable (NavigationItem.Profile.route){
+                Text("Profile")
+            }
+        }
     }
 }
 
